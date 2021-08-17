@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ public class Store {
     private String storeName;
     private double storeBalance;
     private Map<Product, Integer> products = new HashMap<>();
+    public List<Product> inventory = new ArrayList<>();
 
     public Store(String storeName, double storeBalance) {
         this.storeName = storeName;
@@ -32,6 +34,7 @@ public class Store {
                 products.put(newProduct, count);
             } else {
                 products.put(newProduct, count);
+                inventory.add(newProduct);
             }
 
         } else {
@@ -47,6 +50,7 @@ public class Store {
             count--;
             if (count <= 0) {
                 products.remove(selProduct);
+                inventory.remove(selProduct);
             } else {
                 products.put(selProduct, count);
             }
@@ -65,6 +69,7 @@ public class Store {
             count -= qty;
             if (count <= 0) {
                 products.remove(selProduct);
+                inventory.remove(selProduct);
             } else {
                 products.put(selProduct, count);
             }
@@ -84,15 +89,9 @@ public class Store {
 
     public void discardProduct(Product tossProduct) {
         if (products.containsKey(tossProduct)) {
-            System.out.println(tossProduct.name + " has been thrown out.");
+            System.out.println("All " + tossProduct.name + "s has been thrown out.");
             products.remove(tossProduct);
 
-            if (products.get(tossProduct) == null) {
-                System.out.println(tossProduct.name + " is out of stock");
-                products.remove(tossProduct);
-            } else {
-                System.out.println(tossProduct.name + ": " + products.get(tossProduct) + "s remaining.");
-            }
         } else {
             System.out.println(storeName + " has no " + tossProduct.name + "s in stock.");
         }
