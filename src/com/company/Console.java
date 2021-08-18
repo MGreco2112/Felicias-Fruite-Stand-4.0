@@ -89,6 +89,7 @@ public class Console {
 
         if (Integer.parseInt(productSelection) - 1 > -1 && Integer.parseInt(productSelection) - 1 <= products.size()) {
             store.addProduct(products.get(Integer.parseInt(productSelection)- 1));
+            System.out.println(store.getStoreBalance());
         }
     }
 
@@ -145,6 +146,8 @@ public class Console {
         } else {
             store.sellProduct(store.inventory.get(Integer.parseInt(sellPick)- 1));
         }
+
+        System.out.println(store.getStoreBalance());
 
     }
 

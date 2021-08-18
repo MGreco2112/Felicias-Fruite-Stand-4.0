@@ -16,6 +16,10 @@ public class Store {
         this.storeBalance = storeBalance;
     }
 
+    public String getStoreBalance() {
+        return "Current balance: " + storeBalance;
+    }
+
     public void getProducts() {
         for (Product key : products.keySet()) {
             System.out.println(key.name + ": " + products.get(key));
