@@ -3,23 +3,10 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
+        //TODO Bug test error cases, add while loops to submenus, display store balance at end of console use
         Store mattsStore = new Store("Matt's Store", 1000);
-        Produce beet = new Produce("Beet", 0.99, 2.50);
-
-        mattsStore.addProduct(beet);
-        mattsStore.addProduct(beet);
-        mattsStore.addProduct(beet);
-        mattsStore.addProduct(beet);
-        mattsStore.addProduct(beet);
-        mattsStore.addProduct(beet);
-
-        mattsStore.getProducts();
-
-//        mattsStore.sellProduct(beet);
-
-        mattsStore.sellProduct(beet, 4);
-        mattsStore.getProducts();
-//        mattsStore.discardProduct(beet, 5);
+        Console mattsConsole = new Console(mattsStore);
+        mattsConsole.run();
         /*
 
          * Product Class

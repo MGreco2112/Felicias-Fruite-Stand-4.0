@@ -91,6 +91,7 @@ public class Store {
         if (products.containsKey(tossProduct)) {
             System.out.println("All " + tossProduct.name + "s has been thrown out.");
             products.remove(tossProduct);
+            inventory.remove(tossProduct);
 
         } else {
             System.out.println(storeName + " has no " + tossProduct.name + "s in stock.");
@@ -104,6 +105,7 @@ public class Store {
 
             if (count <= 0) {
                 products.remove(tossProduct);
+                inventory.remove(tossProduct);
                 System.out.println("All " + tossProduct.name + " has been removed and is now out of stock.");
             } else {
                 products.put(tossProduct, count);
