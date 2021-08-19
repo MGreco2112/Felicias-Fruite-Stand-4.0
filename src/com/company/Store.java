@@ -81,7 +81,7 @@ public class Store {
 
             System.out.println("You have sold " + qty + " " + selProduct.name + "s");
 
-            if (products.get(selProduct) != null) {
+            if (products.get(selProduct) != null || !products.containsKey(selProduct)) {
                 System.out.println(selProduct.name + ": " + products.get(selProduct) + " remaining.");
             } else {
                 System.out.println(selProduct.name + ": 0 remaining.");
