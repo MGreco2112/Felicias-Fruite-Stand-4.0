@@ -105,7 +105,7 @@ public class Console {
             toToss = scanner.nextLine();
         } while (Integer.parseInt(toToss) - 1 <= -1 && Integer.parseInt(toToss) - 1 > store.inventory.size());
 
-        System.out.println("How many " + store.inventory.get(Integer.parseInt(toToss)).name + " will you toss?");
+        System.out.println("How many " + store.inventory.get(Integer.parseInt(toToss) - 1).name + " will you toss?");
         store.getProducts();
 
         String tossNum = scanner.nextLine();
