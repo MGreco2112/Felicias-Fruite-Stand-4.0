@@ -1,5 +1,7 @@
 package com.company;
 
+
+//TODO assign values to fields using setters
 public class Produce extends Product{
     private final boolean isProduce = true;
 
