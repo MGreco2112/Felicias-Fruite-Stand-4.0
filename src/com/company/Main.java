@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         //TODO Bug test error cases, add while loops to submenus, display store balance at end of console use
-        Store mattsStore = new Store("Matt's Store", 1000);
+        Store mattsStore = new Store("Matt's Store", 100_000);
         Console mattsConsole = new Console(mattsStore);
         mattsConsole.run();
         /*

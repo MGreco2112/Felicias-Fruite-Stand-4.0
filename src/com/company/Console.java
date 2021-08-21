@@ -1,5 +1,9 @@
 package com.company;
 
+import Products.Dairy;
+import Products.Produce;
+import Products.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -23,10 +27,10 @@ public class Console {
     }
 
     private void loadProducts() {
-        products.add(new Produce("Beet", 0.99, 2.50));
-        products.add(new Produce("Lettuce", .20, .99));
-        products.add(new Dairy("Milk", 1.25, 2.50));
-        products.add(new Dairy("Butter", .25, .99));
+        products.add(new Produce("Beet", 99, 250));
+        products.add(new Produce("Lettuce", 20, 99));
+        products.add(new Dairy("Milk", 125, 250));
+        products.add(new Dairy("Butter", 25, 99));
     }
 
 
@@ -82,7 +86,7 @@ public class Console {
         System.out.println("Which Product would you like to add to the store?");
 
         for (int i = 0; i < products.size(); i++) {
-            System.out.println((i+ 1) + ") " + products.get(i).name);
+            System.out.println((i+ 1) + ") " + products.get(i).getName());
         }
 
         String productSelection = scanner.nextLine();
@@ -99,13 +103,14 @@ public class Console {
         String toToss;
         do {
             for (int i = 0; i < store.inventory.size(); i++) {
-                System.out.println((i + 1) + ") " + store.inventory.get(i).name);
+                System.out.println((i + 1) + ") " + store.inventory.get(i).getName());
             }
 
             toToss = scanner.nextLine();
         } while (Integer.parseInt(toToss) - 1 <= -1 && Integer.parseInt(toToss) - 1 > store.inventory.size());
 
-        System.out.println("How many " + store.inventory.get(Integer.parseInt(toToss) - 1).name + " will you toss?");
+        System.out.println("How many " + store.inventory.get(Integer.parseInt(toToss) - 1).getName() + " will you " +
+                "toss?");
         store.getProducts();
 
         String tossNum = scanner.nextLine();
@@ -127,7 +132,7 @@ public class Console {
             System.out.println("Which Product will you sell?");
 
             for (int i = 0; i < store.inventory.size(); i++) {
-                System.out.println((i + 1) + ") " + store.inventory.get(i).name);
+                System.out.println((i + 1) + ") " + store.inventory.get(i).getName());
             }
 
             System.out.println("Enter the number next to the Product name");

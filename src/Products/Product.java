@@ -1,4 +1,4 @@
-package com.company;
+package Products;
 
 //TODO switch access modifiers to Private and create abstract getters
 
@@ -7,4 +7,9 @@ public abstract class Product {
     protected double retailPrice;
     protected double purchaseCost;
 
+    public abstract String getName();
+
+    public abstract double getRetailPrice();
+
+    public abstract double getPurchaseCost();
 }

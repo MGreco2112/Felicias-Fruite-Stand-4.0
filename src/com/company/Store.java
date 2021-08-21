@@ -1,5 +1,7 @@
 package com.company;
 
+import Products.Product;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,15 +24,15 @@ public class Store {
 
     public void getProducts() {
         for (Product key : products.keySet()) {
-            System.out.println(key.name + ": " + products.get(key));
+            System.out.println(key.getName() + ": " + products.get(key));
         }
     }
 
     public void addProduct(Product newProduct) {
         int count = 1;
 
-        if (storeBalance >= newProduct.purchaseCost) {
-            storeBalance -= newProduct.purchaseCost;
+        if (storeBalance >= newProduct.getPurchaseCost()) {
+            storeBalance -= newProduct.getPurchaseCost();
 
             if (products.containsKey(newProduct)) {
                 count = products.get(newProduct);
@@ -42,7 +44,7 @@ public class Store {
             }
 
         } else {
-            System.out.println(storeName + " has insufficient funds to purchase " + newProduct.name);
+            System.out.println(storeName + " has insufficient funds to purchase " + newProduct.getName());
         }
     }
 
@@ -58,10 +60,16 @@ public class Store {
             } else {
                 products.put(selProduct, count);
             }
-            storeBalance += selProduct.retailPrice;
-            System.out.println("You have sold a " + selProduct.name + "\n" + selProduct.name + ": " + products.get(selProduct) + " remaining.");
+            storeBalance += selProduct.getRetailPrice();
+            System.out.println("You have sold one " + selProduct.getName());
+
+            if (products.get(selProduct) != null || !products.containsKey(selProduct)) {
+                System.out.println(selProduct.getName() + ": " + products.get(selProduct) + " remaining.");
+            } else {
+                System.out.println(selProduct.getName() + ": 0 remaining.");
+            }
         } else {
-            System.out.println("You have no " + selProduct.name + "s to sell");
+            System.out.println("You have no " + selProduct.getName() + "s to sell");
         }
     }
 
@@ -77,28 +85,28 @@ public class Store {
             } else {
                 products.put(selProduct, count);
             }
-            storeBalance += selProduct.retailPrice;
+            storeBalance += selProduct.getRetailPrice();
 
-            System.out.println("You have sold " + qty + " " + selProduct.name + "s");
+            System.out.println("You have sold " + qty + " " + selProduct.getName() + "s");
 
             if (products.get(selProduct) != null || !products.containsKey(selProduct)) {
-                System.out.println(selProduct.name + ": " + products.get(selProduct) + " remaining.");
+                System.out.println(selProduct.getName() + ": " + products.get(selProduct) + " remaining.");
             } else {
-                System.out.println(selProduct.name + ": 0 remaining.");
+                System.out.println(selProduct.getName() + ": 0 remaining.");
             }
         } else {
-            System.out.println("You do not have enough " + selProduct.name + "s to sell");
+            System.out.println("You do not have enough " + selProduct.getName() + "s to sell");
         }
     }
 
     public void discardProduct(Product tossProduct) {
         if (products.containsKey(tossProduct)) {
-            System.out.println("All " + tossProduct.name + "s has been thrown out.");
+            System.out.println("All " + tossProduct.getName() + "s has been thrown out.");
             products.remove(tossProduct);
             inventory.remove(tossProduct);
 
         } else {
-            System.out.println(storeName + " has no " + tossProduct.name + "s in stock.");
+            System.out.println(storeName + " has no " + tossProduct.getName() + "s in stock.");
         }
     }
 
@@ -110,10 +118,11 @@ public class Store {
             if (count <= 0) {
                 products.remove(tossProduct);
                 inventory.remove(tossProduct);
-                System.out.println("All " + tossProduct.name + " has been removed and is now out of stock.");
+                System.out.println("All " + tossProduct.getName() + " has been removed and is now out of stock.");
             } else {
                 products.put(tossProduct, count);
-                System.out.println(qty + " " + tossProduct.name + "s have been removed.\n" + tossProduct.name + ": " + products.get(tossProduct) + " remaining.");
+                System.out.println(qty + " " + tossProduct.getName() + "s have been removed.\n" + tossProduct.getName() +
+                        ": " + products.get(tossProduct) + " remaining.");
             }
 
         }
